@@ -2,6 +2,7 @@ use env_logger::Env;
 use log::{debug, error, info};
 use std::net::TcpListener;
 use std::process;
+// use warp;
 
 #[macro_use]
 extern crate serde_derive;
@@ -17,7 +18,8 @@ fn init_logger() {
 }
 
 #[allow(unused_variables)]
-fn main() {
+#[tokio::main]
+async fn main() {
     init_logger();
 
     let config = config::get_config().unwrap_or_else(|e| {
@@ -33,6 +35,8 @@ fn main() {
         Ok(proxy) => proxy,
         Err(e) => panic!("error creating new proxy: {}", e),
     };
+
+    // warp::serve(filter: F)
 
     for stream in listener.incoming() {
         debug!("Connection established!");
