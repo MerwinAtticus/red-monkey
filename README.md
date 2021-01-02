@@ -7,5 +7,3 @@ A Redis Fault Injection Proxy
 <p align="center">
   <img src="./assets/red-monkey-logo.png" width=300 height=300 />
 </p>
-
-
